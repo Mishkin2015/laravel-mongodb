@@ -290,6 +290,11 @@ class Builder extends QueryBuilder {
      */
     public function count($columns = '*', $hint = null)
     {
+      if (!$columns) $columns = ['*'];
+      if (!is_array($columns)) {
+        $columns = array($columns);
+      }
+
       //Get the compiled wheres
       $wheres = $this->compileWheres();
       $useFind = true;
