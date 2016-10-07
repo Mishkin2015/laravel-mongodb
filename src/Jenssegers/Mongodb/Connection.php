@@ -156,6 +156,10 @@ class Connection extends \Illuminate\Database\Connection {
         // need to establish the MongoClient and return them back for use.
         extract($config);
 
+        if ( !empty($config['dsn'])) {
+            return $config['dsn'];
+        }
+
         // Treat host option as array of hosts
         $hosts = is_array($config['host']) ? $config['host'] : array($config['host']);
 
